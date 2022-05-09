@@ -1,4 +1,5 @@
 import Address from '../value-object/address';
+import CustomerValidateFactory from '../factory/customer.validator.factory';
 
 export default class Customer {
 
@@ -35,13 +36,7 @@ export default class Customer {
   }
 
   validate() {
-    if (this._id.length === 0) {
-      throw new Error("Id is required");
-    }
-    if (this._name.length === 0) {
-      throw new Error("Name is required");
-    }
-
+   CustomerValidateFactory.create().validate(this);
   }
 
   changeName(name: string) {
